@@ -119,7 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
+
 
 MEDIA_URL = '/document/'
 
@@ -129,11 +129,9 @@ MEDIA_ROOT = (
 # Static asset configuration
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 DEBUG = False
-
 try:
     from .local_settings import *
 except ImportError:
@@ -141,3 +139,8 @@ except ImportError:
 
 import django_heroku
 django_heroku.settings(locals())
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
